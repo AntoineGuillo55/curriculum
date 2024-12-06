@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jobs | update{% endblock %}
+
+{% block body %}
+
+    <h2>Modifier l'expérience professionnelle : {{ job.jobTitle }}</h2>
+    {{ form_start(jobForm) }}
+    {{ form_widget(jobForm) }}
+    <button>Sauvegarder</button>
+    {{ form_end(jobForm) }}
+
+{% endblock %}

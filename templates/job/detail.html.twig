@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jobs | add{% endblock %}
+
+{% block body %}
+
+    <h2>{{ job.jobTitle }}</h2>
+
+    <div>Nom de l'entreprise : {{ job.companyName }}</div>
+    <div>Localisation de l'entreprise : {{ job.localization }}</div>
+    {% if job.dateEnd != null %}
+        <div>Période : Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</div>
+    {% else %}
+        <div>Période : Depuis le {{ job.dateStart|date('d-m-Y') }}</div>
+    {% endif %}
+    <div>Type de contrat : {{ job.contractType }}</div>
+    <div>Description : <br> {{ job.description }}</div>
+    <div>
+        <a href="{{ path('job_edit', {"id": job.id}) }}">
+            <button>Mettre à jour</button>
+        </a>
+        <a href="{{ path('job_delete', {"id": job.id}) }}">
+            <button>Supprimer</button>
+        </a>
+    </div>
+{% endblock %}
