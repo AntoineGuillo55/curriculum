@@ -11,7 +11,7 @@ class StudyController extends AbstractController
     #[Route('/study', name: 'app_study')]
     public function index(): Response
     {
-        return $this->render('study/index.html.twig', [
+        return $this->render('study/list.html.twig', [
             'controller_name' => 'StudyController',
         ]);
     }

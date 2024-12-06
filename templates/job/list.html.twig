@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jobs{% endblock %}
+
+{% block body %}
+
+    <h2>Mes expériences professionnelles</h2>
+    <div class="list-container">
+
+        {% for job in jobs %}
+            <article>
+                {% if job.companyLogo != null %}
+                    <img src="{{ asset('img/logos/' ~ job.companyName ~ '.png') }}" alt="">
+                {% else %}
+                    <img src="{{ asset('img/icones/travail.png') }}" alt="">
+                {% endif %}
+                <h3>{{ job.jobTitle }}</h3>
+                <div>Entreprise : {{ job.companyName }}</div>
+                <div>Contrat : {{ job.contractType }}</div>
+                <div>Période : Du {{ job.dateStart|date('Y-m-d') }} au {{ job.dateEnd|date('Y-m-d') }}</div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
