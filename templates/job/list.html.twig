@@ -5,6 +5,13 @@
 {% block body %}
 
     <h2>Mes expériences professionnelles</h2>
+
+    <div>
+        <a href="{{ path('job_add') }}">
+            <button>Ajouter une nouvelle expérience professionnelle</button>
+        </a>
+    </div>
+
     <div class="list-container">
 
         {% for job in jobs %}

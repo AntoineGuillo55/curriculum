@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\JobRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\GreaterThan;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\LessThan;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 class Job
@@ -15,9 +19,13 @@ class Job
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[NotBlank]
+    #[Length(max: 50, maxMessage: "L'intitulé du poste ne peux excéder 50 caratères")]
     private ?string $jobTitle = null;
 
     #[ORM\Column(length: 50)]
+    #[NotBlank]
+    #[Length(max: 50, maxMessage: "Le nom de la société ne peux excéder 50 caratères")]
     private ?string $companyName = null;
 
     #[ORM\Column(length: 250, nullable: true)]
@@ -27,18 +35,22 @@ class Job
     private ?string $memoryPhoto = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Length(min: 50, minMessage: 'Si renseignée, la description du poste doit contenir au moins 50 caractère' )]
     private ?string $description = null;
 
     #[ORM\Column(length: 20)]
     private ?string $contractType = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[LessThan(propertyPath: 'dateEnd')]
     private ?\DateTimeInterface $dateStart = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[GreaterThan(propertyPath: "dateStart")]
     private ?\DateTimeInterface $dateEnd = null;
 
     #[ORM\Column(length: 50)]
+    #[Length(max: 50, maxMessage: "La localisation de la société ne peux excéder 50 caratères")]
     private ?string $localization = null;
 
     public function getId(): ?int
