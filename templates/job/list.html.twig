@@ -6,7 +6,7 @@
 
     <h2>Mes expériences professionnelles</h2>
 
-    <div>
+    <div class="add-button-container">
         <a href="{{ path('job_add') }}">
             <button>Ajouter une nouvelle expérience professionnelle</button>
         </a>
@@ -15,17 +15,35 @@
     <div class="list-container">
 
         {% for job in jobs %}
-            <article>
-                {% if job.companyLogo != null %}
-                    <img src="{{ asset('img/logos/' ~ job.companyName ~ '.png') }}" alt="">
-                {% else %}
-                    <img src="{{ asset('img/icones/travail.png') }}" alt="">
-                {% endif %}
-                <h3>{{ job.jobTitle }}</h3>
-                <div>Entreprise : {{ job.companyName }}</div>
-                <div>Contrat : {{ job.contractType }}</div>
-                <div>Période : Du {{ job.dateStart|date('Y-m-d') }} au {{ job.dateEnd|date('Y-m-d') }}</div>
-            </article>
+            <a href="{{ path('job_detail', {"id": job.id}) }}">
+                <article>
+                    {% if job.companyLogo != null %}
+                        <img src="{{ asset('img/logos/' ~ job.companyName ~ '.png') }}" alt="">
+                    {% else %}
+                        <img src="{{ asset('img/icones/travail.png') }}" alt="">
+                    {% endif %}
+                    <h3>{{ job.jobTitle }}</h3>
+                    <div>Entreprise : {{ job.companyName }}</div>
+                    <div>Contrat : {{ job.contractType }}</div>
+                    {% if job.dateEnd != null %}
+                        <div>Période : Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</div>
+                    {% else %}
+                        <div>Période : Depuis le {{ job.dateStart|date('d-m-Y') }}</div>
+                    {% endif %}
+
+                </article>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}
+
+{% block extraStyle %}
+    <style>
+        .add-button-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+    </style>
+{% endblock %}
+

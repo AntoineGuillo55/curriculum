@@ -25,7 +25,8 @@ class JobType extends AbstractType
                     'CDI' => 'CDI',
                     'CDD' => 'CDD',
                     'Alternance' => 'alternance',
-                    'Indépendant' => 'independant'
+                    'Indépendant' => 'independant',
+                    'Stage' => 'stage'
                 ],
                 'multiple' => false,
                 'expanded' => false

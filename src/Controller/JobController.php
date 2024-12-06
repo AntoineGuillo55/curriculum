@@ -26,29 +26,62 @@ class JobController extends AbstractController
     #[Route('/add', name: 'add', methods: ['GET', 'POST'])]
     public function add(Request $request, EntityManagerInterface $manager){
 
-        $jobForm = $this->createForm(JobType::class);
+        $job = new Job();
+        $jobForm = $this->createForm(JobType::class, $job);
         $jobForm->handleRequest($request);
 
         if($jobForm->isSubmitted() && $jobForm->isValid()) {
-            $job = new Job();
-            $job->setJobTitle($jobForm->get('jobTitle')->getData());
-            $job->setCompanyName($jobForm->get('companyName')->getData());
-            $job->setContractType($jobForm->get('contractType')->getData());
-            $job->setCompanyLogo($jobForm->get('companyLogo')->getData());
-            $job->setLocalization($jobForm->get('localization')->getData());
-            $job->setDescription($jobForm->get('description')->getData());
-            $job->setDateStart($jobForm->get('dateStart')->getData());
-            $job->setDateEnd($jobForm->get('dateEnd')->getData());
-            $job->setMemoryPhoto($jobForm->get('memoryPhoto')->getData());
 
             $manager->persist($job);
             $manager->flush();
 
             $this->addFlash('success', 'Expérience professionnelle correctement ajoutée !');
-            return $this->redirectToRoute('job_detail', ['id' => $job->getId()]);
+            return $this->redirectToRoute('job_list',
+//                ['id' => $job->getId()]
+            );
         }
 
         return $this->render('job/add.html.twig', ['jobForm' => $jobForm]);
+    }
+
+    #[Route('/detail/{id}', name: 'detail', methods: ['GET', 'POST'])]
+    public function detail(Request $request, Job $job){
+
+        return $this->render('job/detail.html.twig', [
+            'job' => $job
+        ]);
+    }
+
+    #[Route('/edit/{id}', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Job $job, EntityManagerInterface $manager){
+
+        $jobForm = $this->createForm(JobType::class, $job);
+        $jobForm->handleRequest($request);
+
+        if($jobForm->isSubmitted() && $jobForm->isValid()) {
+
+            $manager->persist($job);
+            $manager->flush();
+            $this->addFlash("success", "L'expérience professsionnelle a bien été mise à jour ! ");
+            return $this->redirectToRoute('job_detail', ['id' => $job->getId()]);
+        }
+        return $this->render('job/edit.html.twig', ['jobForm' => $jobForm, 'job' => $job]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete', methods: ['GET', 'POST'])]
+    public function delete(Request $request, Job $job, EntityManagerInterface $manager){
+
+        if ($job) {
+            $manager->remove($job);
+            $manager->flush();
+
+            $this->addFlash("success", "L'expérience professionnelle a été supprimée avec succès !");
+            return $this->redirectToRoute('job_list');
+        }
+
+        return $this->createNotFoundException();
 
     }
+
+
 }
