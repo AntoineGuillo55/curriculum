@@ -1,9 +1,16 @@
 {% include 'header/header.html.twig' %}
 
-{% block body %}
+<main>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{ label }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
 
-{% endblock %}
+    {% block body %}
 
+    {% endblock %}
+</main>
 {% include 'footer/footer.html.twig' %}
 
 {% block extraStyle %}

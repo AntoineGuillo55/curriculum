@@ -36,9 +36,7 @@ class JobController extends AbstractController
             $manager->flush();
 
             $this->addFlash('success', 'Expérience professionnelle correctement ajoutée !');
-            return $this->redirectToRoute('job_list',
-//                ['id' => $job->getId()]
-            );
+            return $this->redirectToRoute('job_detail', ['id' => $job->getId()]);
         }
 
         return $this->render('job/add.html.twig', ['jobForm' => $jobForm]);
@@ -69,7 +67,7 @@ class JobController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'delete', methods: ['GET', 'POST'])]
-    public function delete(Request $request, Job $job, EntityManagerInterface $manager){
+    public function delete(Job $job, EntityManagerInterface $manager){
 
         if ($job) {
             $manager->remove($job);
