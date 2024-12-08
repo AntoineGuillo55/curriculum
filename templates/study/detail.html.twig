@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Studies | Details{% endblock %}
+
+{% block body %}
+
+    <h2>{{ study.degreeName }}</h2>
+    <div>Nom de l'établissement de formation : {{ study.schoolName }}</div>
+    <div>Lieu de formation : {{ study.localization }}</div>
+    {% if study.degreeState ==  %}
+        
+    {% endif %}
+{% endblock %}

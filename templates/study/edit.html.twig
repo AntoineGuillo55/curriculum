@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Study | update{% endblock %}
+
+{% block body %}
+
+    <h2>Modifier le diplôme ou le titre : {{ study.degreeName }}</h2>
+    {{ form_start(studyForm) }}
+    {{ form_widget(studyForm) }}
+    <button>Sauvegarder</button>
+    {{ form_end(studyForm) }}
+
+{% endblock %}
