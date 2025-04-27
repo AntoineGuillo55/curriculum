@@ -1,65 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section id="home-intro">
-        <img src="{{ asset('img/antoine-homepage.png') }}" alt="Photo Antoine Guillo">
-        <div>
-            <h2>Présentation</h2>
-            <p>Je m'appelle Antoine Guillo, j'ai 31 ans et je suis papa d'un enfant de 4 mois. Je suis né à Saint-Malo
-                en Ille-et-Vilaine, mais j'ai grandi à Lancieux dans les Côtes d'Armor.
-            </p>
-            <p>
-                Je suis actuellement développeur web en alternance à Black Sequoia, et je prépare avec l'ENI (Ecole
-                Nantaise d'Informatique) le passage du titre
-                professionnel CDA (Concepteur Développeur d'Application) de niveau 6 (BAC +4).
-            </p>
-            <p>
-                Je suis à la recherche d'un contrat d'alternance d'un an à compter de Décembre 2025 afin de pouvoir
-                achever ma reconversion professionnelle par l'obtention d'un master Expert en Architecture et
-                Développement Logiciel.
-            </p>
-            <p>
-                Ce CV en ligne a été réalisé en PHP à l'aide du framework Symfony pour le backend, et l'utilisation de
-                Twig pour le rendu côté frontend.
-            </p>
-        </div>
-    </section>
-    <section id="home-exp-pro">
-        <div>
-            <h2>Expériences professionnelles</h2>
-            <p>On me dit souvent que j'ai un CV atypique. C'est vrai que j'ai exercé des métiers très différents depuis
-                mon entrée sur le marché du travail, avant de finalement trouver ma voie. Toutes ces expériences m'ont
-                permises d'acquérir des soft skills qui je l'espère me seront utiles dans ma carrière de
-                développeur.
-            </p>
-            <a href="{{ path('job_list') }}">
-                <button>Voir mes expréiences professionnelles</button>
-            </a>
-        </div>
 
-        <img src="{{ asset('img/logos/black-sequoia.png') }}" alt="Logo black sequoia">
 
-    </section>
-    <section id="home-studies">
-
-        <img src="{{ asset('img/logos/eni.jpg') }}" alt="Logo black sequoia">
-
-        <div>
-            <h2>Etudes supérieures</h2>
-            <p>
-                Ayant débuté mes études supérieures dans la vente, j'ai entamé une reconversion professionnelle pour
-                devenir développeur en 2022 avec l'école O'clock pour l'obtention du titre DWWM (Développeur Web et Web
-                Mobile). Je poursuis actuellement cette reconversion à l'ENI.
-            </p>
-            <a href="">
-                <button>Voir mon cursus</button>
-            </a>
-        </div>
-    </section>
 
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} | Home
+
 {% endblock %}
 
