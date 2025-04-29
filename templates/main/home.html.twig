@@ -1,12 +1,91 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="homepage">
+        <section id="intro">
+            <img src="{{ asset('img/antoine-homepage.png') }}" alt="Photo de Antoine Guillo">
+            <h1>Développeur <span class="blue-txt">fullstack</span> en quête d'une alternance de 12 mois pour son master</h1>
+            <div id="intro-cta">
+                <a href="#">
+                    <button class="white-btn">CV PDF</button>
+                </a>
+                <a href="#">
+                    <button class="blue-btn">On s'appelle</button>
+                </a>
+            </div>
 
+        </section>
+        <section id="bandeau">
+            <div>
+                <div class="marquee-container">
+                    {#                TODO récupérer liste compétences dans les back et faire un foreach #}
+                    <div class="marquee-text">
+                        HTML &bull; CSS &bull; PHP &bull; SYMFONY &bull; JAVA &bull; SPRING BOOT &bull; PYTHON &bull;
+                        JAVASCRIPT &bull; TYPESCRIPT &bull; ANGULAR &bull; VUEJS &bull; FLUTTER &bull; KOTLIN &bull; SQL &bull; PRESTASHOP &bull; WORDPRESS
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 
 {% endblock %}
 
 {% block title %}
 
+{% endblock %}
+
+{% block extraStyle %}
+    <style>
+        #intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 0;
+        }
+
+        #intro img {
+            width: 220px;
+            border-radius: 20px;
+        }
+
+        #intro h1 {
+            text-align: center;
+            font-weight: normal;
+            width: 80% ;
+        }
+
+        #intro #intro-cta {
+            display: flex;
+            gap: 15px;
+        }
+
+    /*    Bandeau compétences */
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            background-color: #ffffff;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            color: #4756FF;
+            padding-left: 100%;
+            animation: scroll-left 10s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+    </style>
 {% endblock %}
 

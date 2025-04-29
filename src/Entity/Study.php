@@ -27,12 +27,12 @@ class Study
     #[Length(max: 255, maxMessage: "Le nom de l'école ne peux excéder 50 caratères")]
     private ?string $schoolName = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $schoolLogo = null;
 
     #[ORM\Column(length: 50)]
     #[NotBlank]
-    #[Choice(['En cours', 'Obtenu'])]
+    #[Choice(['en cours', 'obtenu'])]
     private ?string $degreeState = null;
 
     #[ORM\Column(length: 50)]
@@ -42,6 +42,12 @@ class Study
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
+
+    #[ORM\Column]
+    private ?int $level = null;
+
+    #[ORM\Column]
+    private ?int $bac = null;
 
     public function getId(): ?int
     {
@@ -116,5 +122,29 @@ class Study
     public function setSchoolLogo(?string $schoolLogo): void
     {
         $this->schoolLogo = $schoolLogo;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(int $level): static
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    public function getBac(): ?int
+    {
+        return $this->bac;
+    }
+
+    public function setBac(int $bac): static
+    {
+        $this->bac = $bac;
+
+        return $this;
     }
 }

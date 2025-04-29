@@ -7,7 +7,16 @@
     <h2>{{ study.degreeName }}</h2>
     <div>Nom de l'établissement de formation : {{ study.schoolName }}</div>
     <div>Lieu de formation : {{ study.localization }}</div>
-    {% if study.degreeState ==  %}
-        
+    {% if study.degreeState == "obtenu" %}
+        <div>Année d'obtention : {{ study.date|date('Y') }}</div>
     {% endif %}
+
+    <div>
+        <a href="{{ path('studies_edit', {"id": study.id}) }}">
+            <button>Mettre à jour</button>
+        </a>
+        <a href="{{ path('studies_delete', {"id": study.id}) }}">
+            <button>Supprimer</button>
+        </a>
+    </div>
 {% endblock %}

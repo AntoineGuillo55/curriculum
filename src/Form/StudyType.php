@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
@@ -17,6 +19,26 @@ class StudyType extends AbstractType
     {
         $builder
             ->add('degreeName')
+            ->add('level', ChoiceType::class, [
+                'choices' => [
+                    'Niveau 4' => 4,
+                    'Niveau 5' => 5,
+                    'Niveau 6' => 6,
+                    'Niveau 7' => 7
+                ],
+                'multiple' => false,
+                'expanded' => false
+            ])
+            ->add('bac', ChoiceType::class, [
+                'choices' => [
+                    'Bac +2' => 2,
+                    'Bac +3' => 3,
+                    'Bac +4' => 4,
+                    'Bac +5' => 5
+                ],
+                'multiple' => false,
+                'expanded' => false
+            ])
             ->add('schoolName')
             ->add('degreeState', ChoiceType::class, [
                 'choices' => [

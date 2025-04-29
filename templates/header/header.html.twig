@@ -1,15 +1,20 @@
 {% include 'header/head.html.twig' %}
 <body>
 <header>
-    <div>
-        <img src="" alt="">
-        <h1>ANTOINE GUILLO</h1>
+    <div id="header-logo">
+        <img src="{{ asset('img/icones/robot.svg') }}" alt="Icone de robot">
+        <p>Antoine Guillo</p>
     </div>
-    <div>
-        <button>bouton dark mode</button>
+    <div id="darkmode-switch">
+        <img src="{{ asset('img/icones/light.svg') }}" alt="icone theme light">
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <img src="{{ asset('img/icones/dark.svg') }}" alt="icone theme dark">
     </div>
-    <div>
-        <span>MENU</span>
+    <div id="menu">
+        <span>menu</span>
     </div>
 </header>
 

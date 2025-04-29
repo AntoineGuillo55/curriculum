@@ -18,7 +18,7 @@ class StudyController extends AbstractController
     public function list(StudyRepository $studyRepository): Response
     {
 
-        $studies = $studyRepository->findAll();
+        $studies = $studyRepository->findBy([], ['date' => 'DESC']);
 
         return $this->render('study/list.html.twig', [
             'studies' => $studies,
@@ -39,7 +39,7 @@ class StudyController extends AbstractController
             $manager->flush();
 
             $this->addFlash('success', 'Expérience professionnelle correctement ajoutée !');
-            return $this->redirectToRoute('job_list',
+            return $this->redirectToRoute('studies_list',
 //                ['id' => $study->getId()]
             );
         }
@@ -59,7 +59,7 @@ class StudyController extends AbstractController
             $manager->persist($study);
             $manager->flush();
             $this->addFlash("succes", "Le diplôme ou titre professionnel a bien été mis à jour !");
-            return $this->redirectToRoute('job_list');
+            return $this->redirectToRoute('studies_detail', ['id' => $study->getId()]);
         }
 
         return $this->render('study/edit.html.twig', [
@@ -75,5 +75,13 @@ class StudyController extends AbstractController
         return $this->render('study/detail.html.twig', [
             'study' => $study
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete', methods: ['GET','POST'])]
+    public function delete(Study $study, EntityManagerInterface $manager){
+        $manager->remove($study);
+        $manager->flush();
+        $this->addFlash('success', 'Le diplôme ou titre a correctement été supprimé');
+        return $this->redirectToRoute('studies_list');
     }
 }
