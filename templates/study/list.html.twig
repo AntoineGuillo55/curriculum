@@ -13,21 +13,32 @@
     </div>
 
     <div class="study-list-container">
-
+        <div class="arrow-end-container"><span class="arrow-end">V</span></div>
         {% for study in studies %}
             <div class="study-item-container">
                 {% if study.id is odd %}
-                    <div class="flex-end">{{ study.degreeName }}</div>
+                    <a  class="flex-end" href="{{ path('studies_detail', {'id': study.id}) }}">
+                        <div class="flex-end">
+                            {{ study.degreeName }}<br>
+                            Titre de niveau {{ study.level }} (BAC +{{ study.bac }})
+                        </div>
+                    </a>
                     <div class="arrow-border"></div>
                 {% else %}
                     <div></div>
-                    <div class="arrow-border flex-start">{{ study.degreeName }}</div>
+                    <a class="flex-start arrow-border" href="{{ path('studies_detail', {'id': study.id}) }}">
+                        <div>
+                            {{ study.degreeName }}<br>
+                            Titre de niveau {{ study.level }} (BAC +{{ study.bac }})
+                        </div>
+
+                    </a>
                 {% endif %}
             </div>
 
         {% endfor %}
     </div>
-    <div class="arrow-end-container"><span class="arrow-end">V</span></div>
+
 {% endblock %}
 
 {% block extraStyle %}
@@ -42,10 +53,15 @@
             display: flex;
         }
 
-        .study-item-container div {
+        .study-item-container a,
+        .study-item-container div{
             padding: 2rem;
             width: 50%;
             display: flex;
+        }
+
+        .study-item-container a{
+            text-decoration: none;
         }
 
         .arrow-border{
@@ -54,10 +70,12 @@
 
         .flex-start {
             justify-content: flex-start;
+            text-align: left;
         }
 
         .flex-end {
             justify-content: flex-end;
+            text-align: right;
         }
 
         .arrow-end-container {
@@ -69,8 +87,9 @@
 
         .arrow-end {
             position: relative;
+            rotate: 180deg;
             font-size: 2rem;
-            bottom: 33px;
+            top: 33px;
         }
     </style>
 {% endblock %}
