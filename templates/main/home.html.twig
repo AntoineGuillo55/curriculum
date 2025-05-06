@@ -4,7 +4,8 @@
     <div id="homepage">
         <section id="intro">
             <img src="{{ asset('img/antoine-homepage.png') }}" alt="Photo de Antoine Guillo">
-            <h1>Développeur <span class="blue-txt">fullstack</span> en quête d'une alternance de 12 mois pour son master</h1>
+            <h1>Développeur <span class="blue-txt">fullstack</span> en quête d'une alternance de 12 mois pour son master
+            </h1>
             <div id="intro-cta">
                 <a href="#">
                     <button class="white-btn">CV PDF</button>
@@ -21,10 +22,24 @@
                     {#                TODO récupérer liste compétences dans les back et faire un foreach #}
                     <div class="marquee-text">
                         HTML &bull; CSS &bull; PHP &bull; SYMFONY &bull; JAVA &bull; SPRING BOOT &bull; PYTHON &bull;
-                        JAVASCRIPT &bull; TYPESCRIPT &bull; ANGULAR &bull; VUEJS &bull; FLUTTER &bull; KOTLIN &bull; SQL &bull; PRESTASHOP &bull; WORDPRESS
+                        JAVASCRIPT &bull; TYPESCRIPT &bull; ANGULAR &bull; VUEJS &bull; FLUTTER &bull; KOTLIN &bull; SQL
+                        &bull; PRESTASHOP &bull; WORDPRESS &bull; HTML &bull; CSS &bull; PHP &bull; SYMFONY &bull; JAVA
+                        &bull; SPRING BOOT &bull; PYTHON &bull;
+                        JAVASCRIPT &bull; TYPESCRIPT &bull; ANGULAR &bull; VUEJS &bull; FLUTTER &bull; KOTLIN &bull; SQL
+                        &bull; PRESTASHOP &bull; WORDPRESS &bull;
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="home-links">
+            <a href="">
+                <p class="link-label">Expériences</p>
+                <img class="link-icon" src="{{ asset('img/icones/arrow-link.svg') }}" alt="fleche">
+            </a>
+            <a href="">
+                <p class="link-label">Portfolio</p>
+                <img class="link-icon" src="{{ asset('img/icones/arrow-link.svg') }}" alt="fleche">
+            </a>
         </section>
     </div>
 
@@ -52,7 +67,8 @@
         #intro h1 {
             text-align: center;
             font-weight: normal;
-            width: 80% ;
+            width: 80%;
+            font-size: 60px;
         }
 
         #intro #intro-cta {
@@ -60,7 +76,7 @@
             gap: 15px;
         }
 
-    /*    Bandeau compétences */
+        /*    Bandeau compétences */
 
         .marquee-container {
             width: 100%;
@@ -85,6 +101,36 @@
                 transform: translateX(-100%);
             }
         }
+
+        #home-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #4756FF;
+            padding: 150px 0 150px 0;
+        }
+
+        #home-links a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            border-bottom: 1px solid #FFFFFF;
+            color: #ffffff;
+            text-decoration: none;
+            height: 70px;
+        }
+
+        .link-label {
+            font-size: 48px;
+
+        }
+
+        .link-icon {
+            width: 33px;
+            height: 33px;
+        }
+
 
     </style>
 {% endblock %}
