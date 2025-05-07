@@ -18,16 +18,45 @@
         </section>
         <section id="bandeau">
             <div>
-                <div class="marquee-container">
+                <div class="infinite-scroll-container">
                     {#                TODO récupérer liste compétences dans les back et faire un foreach #}
-                    <div class="marquee-text">
-                        HTML &bull; CSS &bull; PHP &bull; SYMFONY &bull; JAVA &bull; SPRING BOOT &bull; PYTHON &bull;
-                        JAVASCRIPT &bull; TYPESCRIPT &bull; ANGULAR &bull; VUEJS &bull; FLUTTER &bull; KOTLIN &bull; SQL
-                        &bull; PRESTASHOP &bull; WORDPRESS &bull; HTML &bull; CSS &bull; PHP &bull; SYMFONY &bull; JAVA
-                        &bull; SPRING BOOT &bull; PYTHON &bull;
-                        JAVASCRIPT &bull; TYPESCRIPT &bull; ANGULAR &bull; VUEJS &bull; FLUTTER &bull; KOTLIN &bull; SQL
-                        &bull; PRESTASHOP &bull; WORDPRESS &bull;
-                    </div>
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>PHP</li>
+                        <li>SYMFONY</li>
+                        <li>JAVA</li>
+                        <li>SPRING BOOT</li>
+                        <li>PYTHON</li>
+                        <li>JAVASCRIPT</li>
+                        <li>TYPESCRIPT</li>
+                        <li>ANGULAR</li>
+                        <li>VUEJS</li>
+                        <li>FLUTTER</li>
+                        <li>KOTLIN</li>
+                        <li>SQL</li>
+                        <li>PRESTASHOP</li>
+                        <li>WORDPRESS</li>
+                    </ul>
+
+                    <ul class="skill-list" aria-hidden="true">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>PHP</li>
+                        <li>SYMFONY</li>
+                        <li>JAVA</li>
+                        <li>SPRING BOOT</li>
+                        <li>PYTHON</li>
+                        <li>JAVASCRIPT</li>
+                        <li>TYPESCRIPT</li>
+                        <li>ANGULAR</li>
+                        <li>VUEJS</li>
+                        <li>FLUTTER</li>
+                        <li>KOTLIN</li>
+                        <li>SQL</li>
+                        <li>PRESTASHOP</li>
+                        <li>WORDPRESS</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -41,6 +70,63 @@
                 <img class="link-icon" src="{{ asset('img/icones/arrow-link.svg') }}" alt="fleche">
             </a>
         </section>
+        <section id="presentation">
+            <div class="one">
+                <h2 class="blue-txt">Hi !</h2>
+            </div>
+            <div class="two">
+                <p>Bienvenue sur mon site ! Si tu es arrivé ici, c'est que je suis une bête en SEO, ou plus probablement
+                    que tu a eu mon CV entre les mains. N'hésite pas à visiter pour en savoir plus sur mon parcours et
+                    sache que je suis actuellement en recherche d'une alternance pour pouvoir valider un master en
+                    programmation. Donc si tu a une opportunité qui pourrait m'intéresser, et que mon profil te plaît,
+                    appelle moi !</p>
+            </div>
+        </section>
+        <section id="studies">
+            <h2>
+                cursus <br> universitaire
+            </h2>
+            <div class="carrousel-nav">
+                <img class="previous" src="{{ asset('img/icones/blue-up-arrow.svg') }}" alt="fleche">
+                <img class="next" src="{{ asset('img/icones/blue-up-arrow.svg') }}" alt="fleche">
+            </div>
+            <div class="studies-container">
+                <div class="overflow">
+                    {% for study in studies %}
+                        <article
+                                {% if (loop.index) % 2 == 0 %}
+                                    class="bg-blue white-txt"
+                                {% elseif (loop.index) % 3 == 0 %}
+                                    class="bg-dark white-txt"
+                                {% else %}
+                                    class="bg-white blue-txt"
+                                {% endif %}
+                        >
+                            <div class="top">
+                                <p>{{ study.date|date("Y") }}</p>
+                                <img {% if (loop.index) % 2 == 0 %}
+                                    src="{{ asset('img/icones/white-up-arrow.svg') }}"
+                                {% elseif (loop.index) % 3 == 0 %}
+                                    src="{{ asset('img/icones/white-up-arrow.svg') }}"
+                                {% else %}
+                                    src="{{ asset('img/icones/blue-up-arrow.svg') }}"
+                                {% endif %} alt="fleche">
+                            </div>
+                            <div class="bottom">
+                                <p {% if (loop.index) % 2 == 0 %}
+                                    class="white-txt"
+                                {% elseif (loop.index) % 3 == 0 %}
+                                    class="white-txt"
+                                {% else %}
+                                    class="dark-txt"
+                                        {% endif %}>{{ study.schoolName }}</p>
+                                <p>{{ study.degreeName }}</p>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
     </div>
 
 
@@ -51,87 +137,37 @@
 {% endblock %}
 
 {% block extraStyle %}
-    <style>
-        #intro {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 100px 0;
+    <link rel="stylesheet" href="{{ asset('styles/homepage.css') }}">
+
+{% endblock %}
+
+{% block extraJs %}
+    <script type="application/javascript">
+        const previousBtn = document.querySelector(".previous");
+        const nextBtn = document.querySelector(".next");
+        const overflowDiv = document.querySelector(".overflow");
+        const articles = document.querySelectorAll(".overflow article");
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const articleWidth = articles[0].offsetWidth + 10; // largeur + gap
+            const maxIndex = articles.length - Math.floor(overflowDiv.parentElement.offsetWidth / articleWidth);
+            currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+            overflowDiv.style.transform = `translateX(-${currentIndex * articleWidth}px)`;
         }
 
-        #intro img {
-            width: 220px;
-            border-radius: 20px;
-        }
+        nextBtn.addEventListener("click", () => {
+            currentIndex++;
+            updateCarousel();
+        });
 
-        #intro h1 {
-            text-align: center;
-            font-weight: normal;
-            width: 80%;
-            font-size: 60px;
-        }
+        previousBtn.addEventListener("click", () => {
+            currentIndex--;
+            updateCarousel();
+        });
 
-        #intro #intro-cta {
-            display: flex;
-            gap: 15px;
-        }
-
-        /*    Bandeau compétences */
-
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            background-color: #ffffff;
-            white-space: nowrap;
-            box-sizing: border-box;
-        }
-
-        .marquee-text {
-            display: inline-block;
-            color: #4756FF;
-            padding-left: 100%;
-            animation: scroll-left 10s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        #home-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #4756FF;
-            padding: 150px 0 150px 0;
-        }
-
-        #home-links a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 80%;
-            border-bottom: 1px solid #FFFFFF;
-            color: #ffffff;
-            text-decoration: none;
-            height: 70px;
-        }
-
-        .link-label {
-            font-size: 48px;
-
-        }
-
-        .link-icon {
-            width: 33px;
-            height: 33px;
-        }
-
-
-    </style>
+        window.addEventListener("resize", updateCarousel);
+    </script>
 {% endblock %}
 
