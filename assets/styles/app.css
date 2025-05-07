@@ -4,12 +4,33 @@
 
 body{
     font-family: "Bricolage Grotesque", sans-serif;
+    background-color: #F5F5F5;
 }
 
 /* COLORS */
 
 .blue-txt {
     color: #4756FF;
+}
+
+.white-txt{
+    color: #FFFFFF;
+}
+
+.dark-txt {
+    color: #2D1D38;
+}
+
+.bg-blue {
+    background-color: #4756FF;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.bg-dark {
+    background-color: #2D1D38;
 }
 
 /* BUTTONS */
@@ -28,6 +49,12 @@ body{
     border: 1px solid #4756FF;
     border-radius: 30px;
     padding: 10px 15px;
+}
+
+h2 {
+    color: #4756FF;
+    font-size: 60px;
+    font-weight: lighter;
 }
 
 /* HEADER */
@@ -130,5 +157,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+footer {
+    height: 500px;
 }
 

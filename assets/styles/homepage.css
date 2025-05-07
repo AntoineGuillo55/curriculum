@@ -1,0 +1,217 @@
+#intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 0;
+}
+
+#intro img {
+    width: 220px;
+    border-radius: 20px;
+}
+
+#intro h1 {
+    text-align: center;
+    font-weight: normal;
+    width: 80%;
+    font-size: 60px;
+}
+
+#intro #intro-cta {
+    display: flex;
+    gap: 15px;
+}
+
+/*    Bandeau compétences */
+
+.infinite-scroll-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #ffffff;
+    padding: 50px 0;
+    user-select: none;
+    display: flex;
+}
+
+.skill-list {
+    list-style: none;
+    flex-shrink: 0;
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: #4756FF;
+    gap: 1rem;
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#home-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4756FF;
+    padding: 150px 0 150px 0;
+}
+
+#home-links a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    border-bottom: 1px solid #FFFFFF;
+    color: #ffffff;
+    text-decoration: none;
+    height: 70px;
+}
+
+.link-label {
+    font-size: 48px;
+
+}
+
+.link-icon {
+    width: 33px;
+    height: 33px;
+}
+
+/*    Présentation */
+
+#presentation {
+    padding: 90px 0;
+    display: flex;
+}
+
+#presentation div.one {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 50px;
+}
+
+#presentation div.two {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+}
+
+#presentation div.two p {
+    font-size: 37px;
+    font-weight: lighter;
+}
+
+#presentation div.one p {
+    font-size: 60px;
+    position: relative;
+    top: -60px;
+}
+
+#studies {
+    display: flex;
+}
+
+#studies h2 {
+    width: 40%;
+    padding-left: 50px;
+
+}
+
+#studies .studies-container {
+    display: flex;
+    width: 60%;
+    overflow: hidden;
+}
+
+#studies .carrousel-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    gap: 15px;
+}
+
+#studies .carrousel-nav img {
+    width: 25px;
+    height: 25px;
+}
+
+#studies .carrousel-nav img.previous {
+    transform: translateX(0) rotate(-135deg);
+    transition-duration: 0.5s;
+}
+
+#studies .carrousel-nav img.previous:hover {
+    transform: translateX(-10px) rotate(-135deg);
+    transition-duration: 0.5s;
+}
+
+#studies .carrousel-nav img.next {
+    transform: translateX(0) rotate(45deg);
+    transition-duration: 0.5s;
+}
+
+#studies .carrousel-nav img.next:hover {
+    transform: translateX(10px) rotate(45deg);
+    transition-duration: 0.5s;
+}
+
+#studies .studies-container .overflow {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+#studies .studies-container article {
+    flex: 0 0 100%; /* occupe toute la largeur du container sur mobile */
+    max-width: 300px;
+    min-width: 250px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    #studies .studies-container {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    #studies .overflow {
+        scroll-snap-align: start;
+    }
+
+    #studies .studies-container article {
+        scroll-snap-align: start;
+    }
+
+    /* Cache les flèches sur mobile */
+    #studies .carrousel-nav {
+        display: none;
+    }
+}
+
+#studies .studies-container article .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+#studies .studies-container article .top img {
+    width: 33px;
+    height: 33px;
+}
+
+
+
+
+
