@@ -1,6 +1,12 @@
 {% include 'header/head.html.twig' %}
 <body>
-<header>
+<div id="expanded-menu" class="hidden">
+    <a class="menu-link" href="{{ path('main_home') }}">Acceuil</a>
+    <a class="menu-link" href="{{ path('job_list') }}">Expériences professionnelles</a>
+    <a class="menu-link" href="{{ path('studies_list') }}">Cursus universitaire</a>
+    <a class="menu-link" href="#">Portfolio</a>
+</div>
+<header id="header">
     <div id="header-logo">
         <img src="{{ asset('img/icones/robot.svg') }}" alt="Icone de robot">
         <p>Antoine Guillo</p>
@@ -17,6 +23,28 @@
         <span>menu</span>
     </div>
 </header>
+
+<script type="application/javascript">
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const links = document.querySelectorAll('.menu-links');
+        const menuBtn = document.getElementById("menu");
+        let html = document.querySelector('html');
+        html.style.overflow = "visible";
+
+
+
+        menuBtn.addEventListener("click", () => {
+            let menu = document.getElementById("expanded-menu");
+
+            menu.style.display = "flex";
+            html.style.overflow = "hidden";
+        })
+    })
+
+
+</script>
+
 
 
 

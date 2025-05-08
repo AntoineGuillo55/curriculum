@@ -6,17 +6,17 @@
             <img src="{{ asset('img/antoine-homepage.png') }}" alt="Photo de Antoine Guillo">
             <h1>Développeur <span class="blue-txt">fullstack</span> en quête d'une alternance de 12 mois pour son master
             </h1>
-            <div id="intro-cta">
-                <a href="#">
+            <div id="cta">
+                <a href="{{ asset('documents/cv.pdf') }}" download="CV_Antoine_Guillo.pdf">
                     <button class="white-btn">CV PDF</button>
                 </a>
-                <a href="#">
+                <a href="tel:+33612405645">
                     <button class="blue-btn">On s'appelle</button>
                 </a>
             </div>
 
         </section>
-        <section id="bandeau">
+        <div id="bandeau">
             <div>
                 <div class="infinite-scroll-container">
                     {#                TODO récupérer liste compétences dans les back et faire un foreach #}
@@ -59,9 +59,9 @@
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
         <section id="home-links">
-            <a href="">
+            <a href="{{ path('job_list') }}">
                 <p class="link-label">Expériences</p>
                 <img class="link-icon" src="{{ asset('img/icones/arrow-link.svg') }}" alt="fleche">
             </a>
@@ -70,7 +70,7 @@
                 <img class="link-icon" src="{{ asset('img/icones/arrow-link.svg') }}" alt="fleche">
             </a>
         </section>
-        <section id="presentation">
+        <section class="presentation">
             <div class="one">
                 <h2 class="blue-txt">Hi !</h2>
             </div>
@@ -93,40 +93,77 @@
             <div class="studies-container">
                 <div class="overflow">
                     {% for study in studies %}
-                        <article
-                                {% if (loop.index) % 2 == 0 %}
-                                    class="bg-blue white-txt"
-                                {% elseif (loop.index) % 3 == 0 %}
-                                    class="bg-dark white-txt"
-                                {% else %}
-                                    class="bg-white blue-txt"
-                                {% endif %}
-                        >
-                            <div class="top">
-                                <p>{{ study.date|date("Y") }}</p>
-                                <img {% if (loop.index) % 2 == 0 %}
-                                    src="{{ asset('img/icones/white-up-arrow.svg') }}"
-                                {% elseif (loop.index) % 3 == 0 %}
-                                    src="{{ asset('img/icones/white-up-arrow.svg') }}"
-                                {% else %}
-                                    src="{{ asset('img/icones/blue-up-arrow.svg') }}"
-                                {% endif %} alt="fleche">
-                            </div>
-                            <div class="bottom">
-                                <p {% if (loop.index) % 2 == 0 %}
-                                    class="white-txt"
-                                {% elseif (loop.index) % 3 == 0 %}
-                                    class="white-txt"
-                                {% else %}
-                                    class="dark-txt"
-                                        {% endif %}>{{ study.schoolName }}</p>
-                                <p>{{ study.degreeName }}</p>
-                            </div>
-                        </article>
+                        <a href="{{ path('studies_detail', {'id' : study.id}) }}">
+                            <article
+                                    {% if (loop.index) % 2 == 0 %}
+                                        class="bg-blue white-txt"
+                                    {% elseif (loop.index) % 3 == 0 %}
+                                        class="bg-dark white-txt"
+                                    {% else %}
+                                        class="bg-white blue-txt"
+                                    {% endif %}
+                            >
+                                <div class="top">
+                                    <p>{{ study.date|date("Y") }}</p>
+                                    <img {% if (loop.index) % 2 == 0 %}
+                                        src="{{ asset('img/icones/white-up-arrow.svg') }}"
+                                    {% elseif (loop.index) % 3 == 0 %}
+                                        src="{{ asset('img/icones/white-up-arrow.svg') }}"
+                                    {% else %}
+                                        src="{{ asset('img/icones/blue-up-arrow.svg') }}"
+                                    {% endif %} alt="fleche">
+                                </div>
+                                <div class="bottom">
+                                    <p {% if (loop.index) % 2 == 0 %}
+                                        class="white-txt"
+                                    {% elseif (loop.index) % 3 == 0 %}
+                                        class="white-txt"
+                                    {% else %}
+                                        class="dark-txt"
+                                            {% endif %}>{{ study.schoolName }}</p>
+                                    <p>{{ study.degreeName }}</p>
+                                </div>
+                            </article>
+                        </a>
                     {% endfor %}
                 </div>
             </div>
         </section>
+        <section class="fun-fact">
+            <h3>fun fact.</h3>
+            <p>J’ai été attaché parlementaire et j’adore les pizzas. I mean.. j’adore les pizzas !</p>
+            <div>
+                <button id="get-pizza" class="white-btn">Manger une pizza</button>
+                <a href="{{ path('job_list') }}">
+                    <button class="blue-btn">Experiences pro</button>
+                </a>
+            </div>
+            <img id="pizza" src="{{ asset('img/pizza.png') }}" alt="pizza">
+        </section>
+        <section class="presentation">
+            <div class="one">
+                <h2 class="blue-txt">Also..</h2>
+            </div>
+            <div class="two">
+                <p>Even tough my maternal language is french, I speak, read & understand english very well. And yes, I
+                    have a very strong french accent, but according to some it can be cute. Aprendí español en la
+                    escuela, pero no me contrates para eso, te decepcionarás. </p>
+            </div>
+        </section>
+        <section id="phones">
+
+        </section>
+        <section class="fun-fact">
+            <h3>fun fact.</h3>
+            <p>Ma couleur préférée est le <span class="red-txt">rouge</span> et je suis persuadé que c’est l’information qui vous manquait pour
+                m’appeler !</p>
+            <div id="cta">
+                <a href="tel:+33612405645">
+                    <button class="blue-btn">On s'appelle</button>
+                </a>
+            </div>
+        </section>
+
     </div>
 
 
@@ -143,31 +180,86 @@
 
 {% block extraJs %}
     <script type="application/javascript">
-        const previousBtn = document.querySelector(".previous");
-        const nextBtn = document.querySelector(".next");
-        const overflowDiv = document.querySelector(".overflow");
-        const articles = document.querySelectorAll(".overflow article");
+        document.addEventListener("DOMContentLoaded", () => {
+            const previousBtn = document.querySelector(".previous");
+            const nextBtn = document.querySelector(".next");
+            const overflowDiv = document.querySelector(".overflow");
+            const articles = document.querySelectorAll(".overflow article");
 
-        let currentIndex = 0;
+            let currentIndex = 0;
 
-        function updateCarousel() {
-            const articleWidth = articles[0].offsetWidth + 10; // largeur + gap
-            const maxIndex = articles.length - Math.floor(overflowDiv.parentElement.offsetWidth / articleWidth);
-            currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-            overflowDiv.style.transform = `translateX(-${currentIndex * articleWidth}px)`;
-        }
+            function getArticleWidth() {
+                return articles[0].offsetWidth + 10; // largeur + gap (10px)
+            }
 
-        nextBtn.addEventListener("click", () => {
-            currentIndex++;
+            function getMaxIndex() {
+                const containerWidth = overflowDiv.parentElement.offsetWidth;
+                return Math.max(0, articles.length - Math.floor(containerWidth / getArticleWidth()));
+            }
+
+            function updateCarousel() {
+                const articleWidth = getArticleWidth();
+                const maxIndex = getMaxIndex();
+                currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+                overflowDiv.style.transform = `translateX(-${currentIndex * articleWidth}px)`;
+            }
+
+            // Navigation boutons (desktop)
+            if (nextBtn && previousBtn) {
+                nextBtn.addEventListener("click", () => {
+                    currentIndex++;
+                    updateCarousel();
+                });
+
+                previousBtn.addEventListener("click", () => {
+                    currentIndex--;
+                    updateCarousel();
+                });
+            }
+
+            // Navigation swipe (mobile)
+            let startX = 0;
+            let isSwiping = false;
+
+            overflowDiv.addEventListener("touchstart", (e) => {
+                startX = e.touches[0].clientX;
+                isSwiping = true;
+            });
+
+            overflowDiv.addEventListener("touchmove", (e) => {
+                if (!isSwiping) return;
+                const currentX = e.touches[0].clientX;
+                const diffX = startX - currentX;
+
+                if (Math.abs(diffX) > 50) { // Seuil de swipe
+                    if (diffX > 0) {
+                        currentIndex++;
+                    } else {
+                        currentIndex--;
+                    }
+                    updateCarousel();
+                    isSwiping = false;
+                }
+            });
+
+            // Mise à jour au redimensionnement
+            window.addEventListener("resize", updateCarousel);
+
+            // Initialisation
             updateCarousel();
         });
 
-        previousBtn.addEventListener("click", () => {
-            currentIndex--;
-            updateCarousel();
-        });
+        //     pizza
 
-        window.addEventListener("resize", updateCarousel);
+        const pizzaBtn = document.getElementById("get-pizza");
+        let pizzaImg = document.getElementById("pizza");
+        pizzaBtn.addEventListener('click', () => {
+            pizzaImg.classList.remove("pizza-roll");
+            void pizzaImg.offsetWidth; // 🔄 trick pour forcer le reflow
+            pizzaImg.classList.add("pizza-roll");
+
+        })
+
     </script>
 {% endblock %}
 
