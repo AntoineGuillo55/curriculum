@@ -1,217 +1,357 @@
+
+/***  MOBILE  ***/
+
+/* INTRO */
 #intro {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px 0;
+    padding: 50px 20px;
+    text-align: center;
 }
 
 #intro img {
-    width: 220px;
+    width: 150px;
     border-radius: 20px;
 }
 
 #intro h1 {
-    text-align: center;
-    font-weight: normal;
-    width: 80%;
-    font-size: 60px;
+    font-size: 32px;
+    margin-top: 20px;
 }
 
-#intro #intro-cta {
+#cta {
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/*    Bandeau compétences */
+#cta a button {
+    width: 100%;
+}
 
+/* BANDEAU COMPETENCES */
 .infinite-scroll-container {
     width: 100%;
     overflow: hidden;
-    background-color: #ffffff;
-    padding: 50px 0;
-    user-select: none;
+    padding: 30px 0;
     display: flex;
 }
 
 .skill-list {
     list-style: none;
-    flex-shrink: 0;
     display: flex;
+    flex-shrink: 0;
     min-width: 100%;
     justify-content: space-between;
     align-items: center;
-    color: #4756FF;
     gap: 1rem;
+    color: #4756FF;
     animation: scroll-left 20s linear infinite;
 }
 
 @keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
+/* HOME LINKS */
 #home-links {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #4756FF;
-    padding: 150px 0 150px 0;
+    padding: 80px 20px;
+    gap: 20px;
 }
 
 #home-links a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
-    border-bottom: 1px solid #FFFFFF;
-    color: #ffffff;
+    width: 100%;
+    border-bottom: 1px solid #FFF;
+    color: #FFF;
     text-decoration: none;
-    height: 70px;
+    height: 60px;
 }
 
 .link-label {
-    font-size: 48px;
-
+    font-size: 24px;
+    transition: transform 0.5s;
 }
 
 .link-icon {
-    width: 33px;
-    height: 33px;
+    width: 25px;
+    height: 25px;
+    transform: rotate(0);
+    transition: transform 0.5s;
 }
 
-/*    Présentation */
+#home-links a:hover .link-icon {
+    transform: rotate(-45deg);
+}
 
-#presentation {
-    padding: 90px 0;
+#home-links a:hover .link-label {
+    transform: translateX(10px);
+}
+
+/* PRESENTATION */
+.presentation {
     display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    gap: 20px;
 }
 
-#presentation div.one {
-    width: 30%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-left: 50px;
+.presentation .one,
+.presentation .two {
+    width: 100%;
+    padding: 0;
 }
 
-#presentation div.two {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    padding-right: 50px;
+.presentation .two p {
+    font-size: 20px;
+    font-weight: 300;
 }
 
-#presentation div.two p {
-    font-size: 37px;
-    font-weight: lighter;
+.presentation .one h2 {
+    font-size: 36px;
+    margin: 0;
 }
 
-#presentation div.one p {
-    font-size: 60px;
-    position: relative;
-    top: -60px;
-}
-
+/* STUDIES */
 #studies {
     display: flex;
+    flex-direction: column;
+    padding: 0 20px;
 }
 
 #studies h2 {
-    width: 40%;
-    padding-left: 50px;
-
+    width: 100%;
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
 #studies .studies-container {
-    display: flex;
-    width: 60%;
-    overflow: hidden;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
 }
 
 #studies .carrousel-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 30px;
-    gap: 15px;
+    display: none;
 }
 
-#studies .carrousel-nav img {
-    width: 25px;
-    height: 25px;
-}
-
-#studies .carrousel-nav img.previous {
-    transform: translateX(0) rotate(-135deg);
-    transition-duration: 0.5s;
-}
-
-#studies .carrousel-nav img.previous:hover {
-    transform: translateX(-10px) rotate(-135deg);
-    transition-duration: 0.5s;
-}
-
-#studies .carrousel-nav img.next {
-    transform: translateX(0) rotate(45deg);
-    transition-duration: 0.5s;
-}
-
-#studies .carrousel-nav img.next:hover {
-    transform: translateX(10px) rotate(45deg);
-    transition-duration: 0.5s;
-}
-
-#studies .studies-container .overflow {
+#studies .overflow {
     display: flex;
     gap: 10px;
-    transition: transform 0.5s ease;
-    will-change: transform;
+    scroll-snap-align: start;
 }
 
-#studies .studies-container article {
-    flex: 0 0 100%; /* occupe toute la largeur du container sur mobile */
-    max-width: 300px;
-    min-width: 250px;
+#studies .overflow a {
+    text-decoration: none;
+}
+
+#studies .overflow a:hover > article {
+    transform: scale(0.95);
+    transition: transform 0.3s;
+}
+
+#studies .overflow article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
     height: 300px;
     padding: 20px;
     border-radius: 20px;
+    scroll-snap-align: start;
+    transform: scale(1);
+    transition: transform 0.3s;
 }
 
-@media screen and (max-width: 768px) {
-    #studies .studies-container {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-    }
-
-    #studies .overflow {
-        scroll-snap-align: start;
-    }
-
-    #studies .studies-container article {
-        scroll-snap-align: start;
-    }
-
-    /* Cache les flèches sur mobile */
-    #studies .carrousel-nav {
-        display: none;
-    }
-}
-
-#studies .studies-container article .top {
+#studies .top {
     display: flex;
     justify-content: space-between;
 }
 
-#studies .studies-container article .top img {
+#studies .top img {
     width: 33px;
     height: 33px;
 }
 
+/* FUN FACT SECTION */
+.fun-fact {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 150px 20px;
+    overflow: hidden;
+    font-weight: lighter;
+}
 
+.fun-fact h3 {
+    font-size: 28px;
+}
 
+.fun-fact p {
+    font-size: 32px;
+    text-align: center;
+}
 
+img#pizza {
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    left: -300px;
+    pointer-events: none;
+}
+
+@keyframes slideAndSpin {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateX(150vw) rotate(720deg);
+    }
+}
+
+.pizza-roll {
+    animation: slideAndSpin 5s ease-out forwards;
+}
+
+#phones {
+    background-image: url("../../assets/img/phone.png");
+    height: 500px;
+    width: 100vw;
+}
+
+/*** DESKTOP ***/
+@media (min-width: 768px) {
+    #intro {
+        padding: 100px 0;
+    }
+
+    #intro img {
+        width: 220px;
+    }
+
+    #intro h1 {
+        font-size: 60px;
+        width: 80%;
+    }
+
+    #cta {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #home-links {
+        padding: 150px 100px;
+    }
+
+    .link-label {
+        font-size: 48px;
+    }
+
+    .link-icon {
+        width: 33px;
+        height: 33px;
+    }
+
+    .presentation {
+        flex-direction: row;
+        padding: 90px 0;
+    }
+
+    .presentation .one {
+        width: 30%;
+        justify-content: flex-start;
+        padding-left: 50px;
+    }
+
+    .presentation .two {
+        width: 70%;
+        align-items: center;
+        padding-right: 50px;
+    }
+
+    .presentation .two p {
+        font-size: 37px;
+    }
+
+    .presentation .one h2 {
+        font-size: 60px;
+        position: relative;
+        top: -60px;
+    }
+
+    #studies {
+        flex-direction: row;
+    }
+
+    #studies h2 {
+        width: 40%;
+        padding-left: 50px;
+    }
+
+    #studies .studies-container {
+        width: 60%;
+        overflow: hidden;
+    }
+
+    #studies .carrousel-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+        gap: 15px;
+    }
+
+    #studies .carrousel-nav img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #studies .carrousel-nav img.previous {
+        transform: rotate(-135deg);
+        transition: transform 0.5s;
+    }
+
+    #studies .carrousel-nav img.previous:hover {
+        transform: translateX(-10px) rotate(-135deg);
+    }
+
+    #studies .carrousel-nav img.next {
+        transform: rotate(45deg);
+        transition: transform 0.5s;
+    }
+
+    #studies .carrousel-nav img.next:hover {
+        transform: translateX(10px) rotate(45deg);
+    }
+
+    #studies .overflow {
+        transition: transform 0.5s ease;
+        will-change: transform;
+    }
+
+    .fun-fact h3 {
+        font-size: 37px;
+    }
+
+    .fun-fact p {
+        font-size: 60px;
+    }
+
+    img#pizza {
+        width: 500px;
+        left: -500px;
+    }
+}
 

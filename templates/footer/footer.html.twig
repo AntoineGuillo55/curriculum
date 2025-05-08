@@ -1,5 +1,34 @@
 <footer>
-    Ceci est un footer
+
+    <img src="{{ asset('img/icones/litte-robot.png') }}" alt="icone robot">
+    <div class="footer-bottom">
+        <p>
+            Antoine Guillo, <br> Votre futur alternant.
+        </p>
+        <div class="footer-links">
+            <div class="footer-links-top">
+                <a href="{{ path('main_home') }}">
+                    <button class="blue-btn">infos.</button>
+                </a>
+                <a href="{{ path('studies_list') }}">
+                    <button class="white-btn">Cursus universitaire</button>
+                </a>
+            </div>
+            <div class="footer-links-bottom">
+                <a href="#">
+                    <button class="white-btn">
+                        Portfolio
+                    </button>
+                </a>
+                <a href="{{ path('job_list') }}">
+                    <button class="white-btn">Expériences professionnelles</button>
+                </a>
+                <a href="https://www.linkedin.com/in/antoine-guillo-2563485b/" target="_blank">
+                    <button class="white-btn">Linkedin</button>
+                </a>
+            </div>
+        </div>
+    </div>
 </footer>
 
 
