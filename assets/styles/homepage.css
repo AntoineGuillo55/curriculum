@@ -8,10 +8,11 @@
     align-items: center;
     padding: 50px 20px;
     text-align: center;
+    gap: 10px;
 }
 
 #intro img {
-    width: 150px;
+    width: 300px;
     border-radius: 20px;
 }
 
@@ -130,7 +131,6 @@
 
 #studies h2 {
     width: 100%;
-    font-size: 32px;
     margin-bottom: 20px;
 }
 
@@ -235,10 +235,11 @@ img#pizza {
 @media (min-width: 768px) {
     #intro {
         padding: 100px 0;
+
     }
 
     #intro img {
-        width: 220px;
+        width: 400px;
     }
 
     #intro h1 {

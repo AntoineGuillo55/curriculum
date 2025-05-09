@@ -148,6 +148,7 @@
                 <p>Even tough my maternal language is french, I speak, read & understand english very well. And yes, I
                     have a very strong french accent, but according to some it can be cute. Aprendí español en la
                     escuela, pero no me contrates para eso, te decepcionarás. </p>
+                <p>You can download a certificate from the learning english platform goFLUENT which certifie my english level <a href="{{ asset('documents/Antoine_GUILLO_Proficiency_Test_Result.pdf') }}" download="Antoine_GUILLO_Proficiency_Test_Result.pdf">here</a>.</p>
             </div>
         </section>
         <section id="phones">
@@ -179,87 +180,7 @@
 {% endblock %}
 
 {% block extraJs %}
-    <script type="application/javascript">
-        document.addEventListener("DOMContentLoaded", () => {
-            const previousBtn = document.querySelector(".previous");
-            const nextBtn = document.querySelector(".next");
-            const overflowDiv = document.querySelector(".overflow");
-            const articles = document.querySelectorAll(".overflow article");
-
-            let currentIndex = 0;
-
-            function getArticleWidth() {
-                return articles[0].offsetWidth + 10; // largeur + gap (10px)
-            }
-
-            function getMaxIndex() {
-                const containerWidth = overflowDiv.parentElement.offsetWidth;
-                return Math.max(0, articles.length - Math.floor(containerWidth / getArticleWidth()));
-            }
-
-            function updateCarousel() {
-                const articleWidth = getArticleWidth();
-                const maxIndex = getMaxIndex();
-                currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-                overflowDiv.style.transform = `translateX(-${currentIndex * articleWidth}px)`;
-            }
-
-            // Navigation boutons (desktop)
-            if (nextBtn && previousBtn) {
-                nextBtn.addEventListener("click", () => {
-                    currentIndex++;
-                    updateCarousel();
-                });
-
-                previousBtn.addEventListener("click", () => {
-                    currentIndex--;
-                    updateCarousel();
-                });
-            }
-
-            // Navigation swipe (mobile)
-            let startX = 0;
-            let isSwiping = false;
-
-            overflowDiv.addEventListener("touchstart", (e) => {
-                startX = e.touches[0].clientX;
-                isSwiping = true;
-            });
-
-            overflowDiv.addEventListener("touchmove", (e) => {
-                if (!isSwiping) return;
-                const currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-
-                if (Math.abs(diffX) > 50) { // Seuil de swipe
-                    if (diffX > 0) {
-                        currentIndex++;
-                    } else {
-                        currentIndex--;
-                    }
-                    updateCarousel();
-                    isSwiping = false;
-                }
-            });
-
-            // Mise à jour au redimensionnement
-            window.addEventListener("resize", updateCarousel);
-
-            // Initialisation
-            updateCarousel();
-        });
-
-        //     pizza
-
-        const pizzaBtn = document.getElementById("get-pizza");
-        let pizzaImg = document.getElementById("pizza");
-        pizzaBtn.addEventListener('click', () => {
-            pizzaImg.classList.remove("pizza-roll");
-            void pizzaImg.offsetWidth; // 🔄 trick pour forcer le reflow
-            pizzaImg.classList.add("pizza-roll");
-
-        })
-
-    </script>
+    {{ parent() }}
+    <script src="{{ asset('js/homepage.js') }}"></script>
 {% endblock %}
 

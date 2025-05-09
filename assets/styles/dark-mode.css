@@ -1,0 +1,61 @@
+/* === DARK MODE === */
+
+body.dark-mode {
+    background: #2D1D38;
+    color: #FFFFFF;
+}
+
+body.dark-mode #icon-moon path{
+    fill: #FFFFFF;
+}
+
+body.dark-mode .skill-list {
+    color: #FFFFFF;
+}
+
+body.dark-mode #home-links {
+    background-color: #477EFF;
+}
+
+body.dark-mode h2 {
+    color: #477EFF;
+}
+
+body.dark-mode .blue-btn {
+    background-color: #477EFF;
+    border: 1px solid #477EFF;
+}
+
+body.dark-mode .white-btn {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: #2D1D38;
+}
+
+body.dark-mode .white-btn:hover {
+    background-color: #477EFF;
+    border: 1px solid #477EFF;
+}
+
+body.dark-mode .blue-btn:hover {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: #2D1D38;
+}
+
+body.dark-mode header #header-logo p {
+    color: #FFFFFF;
+}
+
+body.dark-mode .studies-container .overflow a article.bg-dark {
+    background-color: #FFFFFF;
+    color: #477EFF;
+}
+
+body.dark-mode a {
+    color: #477EFF;
+}
+
+body.dark-mode #expanded-menu ul li a {
+    color: #FFFFFF;
+}
