@@ -27,6 +27,10 @@ h2 {
 h3 { font-weight: lighter; }
 p { font-weight: lighter; }
 
+a {
+    text-decoration: none;
+}
+
 /* === BUTTONS === */
 .white-btn,
 .blue-btn {
@@ -56,6 +60,8 @@ p { font-weight: lighter; }
 
 /* === HEADER (MOBILE FIRST) === */
 header {
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,15 +86,47 @@ header div {
     font-size: 24px;
 }
 
+
+/* === MENU === */
+
+#menu {
+    justify-content: flex-end;
+    padding-right: 20px;
+    cursor: pointer;
+
+}
+
+#expanded-menu {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+#expanded-menu ul {
+    list-style: none;
+}
+
+#expanded-menu a {
+    text-decoration: none;
+    font-size: 30px;
+}
+
+#expanded-menu a:hover {
+    text-decoration: underline;
+    transition-duration: 5s;
+}
+
+/* === DARK MODE SWITCH === */
+
 #darkmode-switch {
     gap: 5px;
 }
 
-#menu {
-    justify-content: center;
-}
-
-/* === DARK MODE SWITCH === */
 .switch {
     position: relative;
     display: inline-block;
@@ -123,11 +161,11 @@ header div {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #2D1D38;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #2D1D38;
 }
 
 input:checked + .slider:before {
@@ -190,29 +228,15 @@ footer {
         height: 122px;
     }
 
-    header div {
+    header div,
+    header a{
         width: calc(100% / 3);
         justify-content: center;
     }
 
-    #header-logo {
+    header a #header-logo {
         justify-content: flex-start;
         padding-left: 20px;
-    }
-
-    #menu {
-        justify-content: flex-end;
-        padding-right: 20px;
-    }
-
-    #expanded-menu {
-        width: 100vw;
-        height: 100vh;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        transition-duration: 3s;
     }
 
     .footer-bottom {
