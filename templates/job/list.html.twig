@@ -3,51 +3,41 @@
 {% block title %}Jobs{% endblock %}
 
 {% block body %}
+<div class="page-container" id="exp-pro">
+    <h1>De banquier à développeur...</h1>
 
-    <h2>Mes expériences professionnelles</h2>
-
-    <div class="add-button-container">
-        <a href="{{ path('job_add') }}">
-            <button>Ajouter une nouvelle expérience professionnelle</button>
-        </a>
-    </div>
+    {% set classes = ['bg-blue white-txt', 'bg-dark white-txt', 'bg-purple white-txt', 'bg-white blue-txt'] %}
 
     <div class="list-container">
-
+        <img src="{{ asset('img/reading.svg') }}" alt="un homme qui lit"></img>
         {% for job in jobs %}
+            {% set class = classes[loop.index0 % 4] %}
             <a href="{{ path('job_detail', {"id": job.id}) }}">
-                <article>
-                    {% if job.companyLogo != null %}
-                        <img src="{{ asset('img/logos/' ~ job.companyName ~ '.png') }}" alt="">
-                    {% else %}
-                        <img src="{{ asset('img/icones/travail.png') }}" alt="">
-                    {% endif %}
+                <article class="{{ class }}">
+                    <div class="article-top">
+                        <div>{{ job.contractType }}</div>
+                        {% if job.dateEnd != null %}
+                            <div>du {{ job.dateStart|date('d/m/Y') }} au {{ job.dateEnd|date('d/m/Y') }}</div>
+                        {% else %}
+                            <div>depuis le {{ job.dateStart|date('d/m/Y') }}</div>
+                        {% endif %}
+                    </div>
                     <h3>{{ job.jobTitle }}</h3>
-                    <div>Entreprise : {{ job.companyName }}</div>
-                    <div>Contrat : {{ job.contractType }}</div>
-                    {% if job.dateEnd != null %}
-                        <div>Période : Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</div>
-                    {% else %}
-                        <div>Période : Depuis le {{ job.dateStart|date('d-m-Y') }}</div>
-                    {% endif %}
-
+                    <div class="article-bottom">{{ job.companyName }}</div>
                 </article>
             </a>
         {% endfor %}
     </div>
+</div>
+
 {% endblock %}
 
 {% block extraStyle %}
-    <style>
-        .add-button-container {
-            display: flex;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('styles/exp-pro.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/list-grid.css') }}">
 {% endblock %}
 
 {% block extraJs %}
-    {{ parent() }}
+
 {% endblock %}
 

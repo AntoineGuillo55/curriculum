@@ -1,0 +1,27 @@
+#exp-pro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 200px;
+}
+
+#exp-pro h1 {
+    margin-bottom: 100px;
+}
+
+.list-container img {
+    display: none;
+}
+
+@media (min-width: 1120px) {
+
+    .list-container img {
+        display: block;
+        grid-column: 3;
+        grid-row: 1 / 3;
+        width: 400px;
+        height: 813px;
+
+    }
+
+}

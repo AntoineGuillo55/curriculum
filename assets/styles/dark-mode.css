@@ -47,7 +47,7 @@ body.dark-mode header #header-logo p {
     color: #FFFFFF;
 }
 
-body.dark-mode .studies-container .overflow a article.bg-dark {
+body.dark-mode article.bg-dark {
     background-color: #FFFFFF;
     color: #477EFF;
 }

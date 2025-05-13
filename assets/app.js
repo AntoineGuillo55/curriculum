@@ -10,6 +10,5 @@ import './styles/app.css'
 import './styles/dark-mode.css'
 
 import './js/display-menu.js'
-import './js/dark-theme.js'
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

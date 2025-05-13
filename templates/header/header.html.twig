@@ -20,7 +20,7 @@
             <path d="M14.0192 6.42944C14.1425 6.42944 14.2667 6.38231 14.361 6.28804L16.2944 4.35463C16.4829 4.1661 16.4829 3.85973 16.2944 3.67119C16.1059 3.48265 15.7995 3.48265 15.6109 3.67119L13.6775 5.60459C13.489 5.79313 13.489 6.0995 13.6775 6.28804C13.7718 6.38231 13.896 6.42944 14.0192 6.42944Z" fill="#4756FF"/>
         </svg>
         <label class="switch">
-            <input id="theme-switch" type="checkbox" value="1">
+            <input data-controller="theme" data-action="change->theme#toggleDarkMode" id="theme-switch" type="checkbox" value="1">
             <span class="slider round"></span>
         </label>
 {#        <img src="{{ asset('img/icones/dark.svg') }}" alt="icone theme dark">#}
@@ -29,8 +29,8 @@
         </svg>
 
     </div>
-    <div id="menu">
-        <span>menu</span>
+    <div data-controller="menu" id="menu">
+        <span data-action="click->menu#displayMenu">menu</span>
     </div>
 </header>
 
