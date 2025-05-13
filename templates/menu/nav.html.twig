@@ -1,11 +1,11 @@
-<div id="expanded-menu" class="hidden">
+<div data-controller="menu" data-menu-target="expandedMenu" data-action="click->menu#hideMenu" id="expanded-menu" class="hidden">
     <ul>
         <li><a href="{{ path('main_home') }}">Accueil</a></li>
         <li><a href="{{ path('job_list') }}">Expériences professionnelles</a></li>
         <li><a href="{{ path('studies_list') }}">Etudes supérieures</a></li>
         <li><a href="">Portfolio</a></li>
         <li><a href="">Contact</a></li>
-        <li><a href="">Administration</a></li>
+        <li><a href="{{ path('app_admin') }}">Administration</a></li>
     </ul>
 </div>
 

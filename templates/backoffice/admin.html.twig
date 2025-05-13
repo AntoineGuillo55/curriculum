@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div id="admin">
+    <h1>Espace administrateur</h1>
+    <div class="container">
+
+        <a href="{{ path('job_list') }}">
+            <div>
+                Gestion des expériences pro
+            </div>
+        </a>
+        <a href="{{ path('studies_list') }}">
+            <div>
+                Gestion du cursus universitaire
+            </div>
+        </a>
+        <a href="">
+            <div>
+                Gestion des compétences
+            </div>
+        </a>
+        <a href="">
+            <div>
+                Gestion du portfolio
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block title %}
+    Espace admninistrateur
+{% endblock %}
+
+{% block extraStyle %}
+    <link rel="stylesheet" href="{{ asset('styles/admin.css') }}">
+{% endblock %}
+
