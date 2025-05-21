@@ -3,24 +3,21 @@
 {% block title %}Jobs | add{% endblock %}
 
 {% block body %}
-
+<div class="page-container">
     <h2>{{ job.jobTitle }}</h2>
 
-    <div>Nom de l'entreprise : {{ job.companyName }}</div>
-    <div>Localisation de l'entreprise : {{ job.localization }}</div>
+    <p><span class="blue-txt">Nom de l'entreprise :</span> {{ job.companyName }}</p>
+    <p><span class="blue-txt">Localisation de l'entreprise :</span> {{ job.localization }}</p>
     {% if job.dateEnd != null %}
-        <div>Période : Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</div>
+        <p><span class="blue-txt">Période :</span> Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</p>
     {% else %}
-        <div>Période : Depuis le {{ job.dateStart|date('d-m-Y') }}</div>
+        <p><span class="blue-txt">Période :</span> Depuis le {{ job.dateStart|date('d-m-Y') }}</p>
     {% endif %}
-    <div>Type de contrat : {{ job.contractType }}</div>
-    <div>Description : <br> {{ job.description }}</div>
-    <div>
-        <a href="{{ path('job_edit', {"id": job.id}) }}">
-            <button>Mettre à jour</button>
-        </a>
-        <a href="{{ path('job_delete', {"id": job.id}) }}">
-            <button>Supprimer</button>
-        </a>
-    </div>
+    <p><span class="blue-txt">Type de contrat :</span> {{ job.contractType }}</p>
+    <p><span class="blue-txt">Description :</span>  {{ job.description }}</p>
+    <a href="{{ path('job_edit', {"id": job.id}) }}">
+        <button>Mettre à jour</button>
+    </a>
+</div>
+
 {% endblock %}
