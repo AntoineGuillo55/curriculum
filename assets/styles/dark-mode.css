@@ -52,6 +52,11 @@ body.dark-mode article.bg-dark {
     color: #477EFF;
 }
 
+body.dark-mode .job-info-block.bg-dark {
+    background-color: #FFFFFF;
+    color: #477EFF;
+}
+
 body.dark-mode a {
     color: #477EFF;
 }

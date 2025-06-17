@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/portfolio.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h1 class="mb-4">{{ title }}</h1>
+            <div class="construction-message">
+                <p class="lead">🚧 Cette page est en cours de construction 🚧</p>
+                <p>Revenez bientôt pour découvrir mes projets !</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

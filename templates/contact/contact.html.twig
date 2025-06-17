@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/contact.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="contact-container">
+    <div class="contact-form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Contactez moi !</h2>
+            </div>
+            <div class="card-body">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            {{ form_label(form.nom) }}
+                            {{ form_widget(form.nom) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+                        <div class="col-md-6 form-group">
+                            {{ form_label(form.prenom) }}
+                            {{ form_widget(form.prenom) }}
+                            {{ form_errors(form.prenom) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.entreprise) }}
+                        {{ form_widget(form.entreprise) }}
+                        {{ form_errors(form.entreprise) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.objet) }}
+                        {{ form_widget(form.objet) }}
+                        {{ form_errors(form.objet) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message) }}
+                        {{ form_errors(form.message) }}
+                    </div>
+
+                    <div class="text-center">
+                        {{ form_widget(form.envoyer, {'attr': {'class': 'blue-btn btn-submit'}}) }}
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

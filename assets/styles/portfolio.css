@@ -1,0 +1,18 @@
+.construction-message {
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.construction-message .lead {
+    font-size: 1.5rem;
+    color: #477EFF;
+    margin-bottom: 1rem;
+}
+
+.construction-message p {
+    color: #666;
+    font-size: 1.1rem;
+} 

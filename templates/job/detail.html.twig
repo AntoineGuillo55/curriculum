@@ -3,21 +3,36 @@
 {% block title %}Jobs | add{% endblock %}
 
 {% block body %}
-<div class="page-container">
+<div id="job-detail" class="page-container">
     <h2>{{ job.jobTitle }}</h2>
+    
+    <div class="job-info-block bg-dark">
+        <p>Nom de l'entreprise : {{ job.companyName }}</p>
+    </div>
 
-    <p><span class="blue-txt">Nom de l'entreprise :</span> {{ job.companyName }}</p>
-    <p><span class="blue-txt">Localisation de l'entreprise :</span> {{ job.localization }}</p>
-    {% if job.dateEnd != null %}
-        <p><span class="blue-txt">Période :</span> Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</p>
-    {% else %}
-        <p><span class="blue-txt">Période :</span> Depuis le {{ job.dateStart|date('d-m-Y') }}</p>
-    {% endif %}
-    <p><span class="blue-txt">Type de contrat :</span> {{ job.contractType }}</p>
-    <p><span class="blue-txt">Description :</span>  {{ job.description }}</p>
-    <a href="{{ path('job_edit', {"id": job.id}) }}">
-        <button>Mettre à jour</button>
-    </a>
+    <div class="job-info-block">
+        <p>Localisation de l'entreprise : {{ job.localization }}</p>
+    </div>
+
+    <div class="job-info-block">
+        {% if job.dateEnd != null %}
+            <p>Période : Du {{ job.dateStart|date('d-m-Y') }} au {{ job.dateEnd|date('d-m-Y') }}</p>
+        {% else %}
+            <p>Période : Depuis le {{ job.dateStart|date('d-m-Y') }}</p>
+        {% endif %}
+    </div>
+
+    <div class="job-info-block bg-dark">
+        <p>Type de contrat : {{ job.contractType | capitalize }}</p>
+    </div>
+
+    <div class="job-info-block">
+        <p> {{ job.description }}</p>
+    </div>
+
 </div>
+{% endblock %}
 
+{% block extraStyle %}
+    <link rel="stylesheet" href="{{ asset('styles/job-detail.css') }}">
 {% endblock %}
