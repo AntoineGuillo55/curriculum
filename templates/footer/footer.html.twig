@@ -8,20 +8,23 @@
         <div class="footer-links">
             <div class="footer-links-top">
                 <a href="{{ path('main_home') }}">
-                    <button class="blue-btn">infos.</button>
+                    <button class="{{ app.request.get('_route') == 'main_home' ? 'blue-btn' : 'white-btn' }}">infos.</button>
                 </a>
                 <a href="{{ path('studies_list') }}">
-                    <button class="white-btn">Cursus universitaire</button>
+                    <button class="{{ app.request.get('_route') == 'studies_list' ? 'blue-btn' : 'white-btn' }}">Cursus universitaire</button>
                 </a>
             </div>
             <div class="footer-links-bottom">
-                <a href="#">
-                    <button class="white-btn">
+                <a href="{{ path('portfolio') }}">
+                    <button class="{{ app.request.get('_route') == 'portfolio' ? 'blue-btn' : 'white-btn' }}">
                         Portfolio
                     </button>
                 </a>
                 <a href="{{ path('job_list') }}">
-                    <button class="white-btn">Expériences professionnelles</button>
+                    <button class="{{ app.request.get('_route') == 'job_list' ? 'blue-btn' : 'white-btn' }}">Expériences professionnelles</button>
+                </a>
+                <a href="{{ path('app_contact') }}">
+                    <button class="{{ app.request.get('_route') == 'app_contact' ? 'blue-btn' : 'white-btn' }}">Contact</button>
                 </a>
                 <a href="https://www.linkedin.com/in/antoine-guillo-2563485b/" target="_blank">
                     <button class="white-btn">Linkedin</button>

@@ -53,7 +53,7 @@
 
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1980px) {
 
     .list-container {
         grid-template-columns: repeat(4, 1fr);
