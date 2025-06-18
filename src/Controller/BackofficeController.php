@@ -11,6 +11,8 @@ class BackofficeController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function dashboard(): Response
     {
+
+        
         return $this->render('backoffice/admin.html.twig');
     }
 }
