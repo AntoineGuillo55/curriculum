@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div id="admin">
+    <h1>Gestion des compétences</h1>
+    <div class="container">
+        
+        <div class="admin-actions">
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Ajouter une compétence
+            </a>
+        </div>
+
+        <div class="admin-content">
+            <div class="skills-categories">
+                <div class="category">
+                    <h3>Langages de programmation</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Compétence</th>
+                                    <th>Niveau</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for skill in programming_skills %}
+                                <tr>
+                                    <td>{{ skill.name }}</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: {{ skill.level }}%"></div>
+                                        </div>
+                                        <span class="skill-level">{{ skill.level }}%</span>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">
+                                            Modifier
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette compétence ?')">
+                                            Supprimer
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="3" class="text-center">Aucune compétence en programmation</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Frameworks et outils</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Compétence</th>
+                                    <th>Niveau</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for skill in framework_skills %}
+                                <tr>
+                                    <td>{{ skill.name }}</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: {{ skill.level }}%"></div>
+                                        </div>
+                                        <span class="skill-level">{{ skill.level }}%</span>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">
+                                            Modifier
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette compétence ?')">
+                                            Supprimer
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="3" class="text-center">Aucune compétence en frameworks</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Compétences transversales</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Compétence</th>
+                                    <th>Niveau</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for skill in soft_skills %}
+                                <tr>
+                                    <td>{{ skill.name }}</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: {{ skill.level }}%"></div>
+                                        </div>
+                                        <span class="skill-level">{{ skill.level }}%</span>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-warning">
+                                            Modifier
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette compétence ?')">
+                                            Supprimer
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="3" class="text-center">Aucune compétence transversale</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-footer">
+            <a href="{{ path('app_admin') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Retour au dashboard
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block title %}
+    Gestion des compétences
+{% endblock %}
+
+{% block extraStyle %}
+    <link rel="stylesheet" href="{{ asset('styles/admin.css') }}">
+{% endblock %} 

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div id="admin">
+    <h1>Gestion du cursus universitaire</h1>
+    <div class="container">
+        
+               <div class="admin-actions">
+            <a href="{{ path('job_add') }}">
+                <button class="blue-btn">
+                     Ajouter une formation
+                </button>
+            </a>
+            <a href="{{ path('app_admin') }}">
+               <button class="blue-btn">
+                     Retour au dashboard
+                </button>
+            </a>
+        </div>
+
+        <div class="admin-content">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Diplôme</th>
+                            <th>Établissement</th>
+                            <th>Période</th>
+                            <th>Niveau</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for study in studies %}
+                        <tr>
+                            <td>{{ study.degreeName }}</td>
+                            <td>{{ study.schoolName }}</td>
+                            <td>{{ study.date|date('m/Y') }}</td>
+                            <td>{{ study.level }}</td>
+                            <td>
+                                <a href="{{ path('studies_detail', {'id': study.id}) }}" class="btn btn-sm btn-info">
+                                    Voir
+                                </a>
+                                <a href="{{ path('studies_edit', {'id': study.id}) }}" class="btn btn-sm btn-warning">
+                                    Modifier
+                                </a>
+                                <a href="{{ path('studies_delete', {'id': study.id}) }}" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')">
+                                    Supprimer
+                                </a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">Aucune formation trouvée</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="admin-footer">
+            <a href="{{ path('app_admin') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Retour au dashboard
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block title %}
+    Gestion du cursus universitaire
+{% endblock %}
+
+{% block extraStyle %}
+    <link rel="stylesheet" href="{{ asset('styles/admin-page.css') }}">
+{% endblock %} 
