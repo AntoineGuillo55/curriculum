@@ -12,11 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-<<<<<<< HEAD
   
-=======
-
->>>>>>> acf75a12886bc30600bb7f4d1b673f2cf84d98f7
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]

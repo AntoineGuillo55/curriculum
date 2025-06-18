@@ -5,11 +5,7 @@
     min-height: calc(100vh - 300px); /* Ajustement pour tenir compte du header et footer */
     padding: 2rem 0;
 }
-<<<<<<< HEAD
  
-=======
-
->>>>>>> acf75a12886bc30600bb7f4d1b673f2cf84d98f7
 .contact-container .card-header h2 {
     color: #477EFF;
 }
