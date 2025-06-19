@@ -1,10 +1,10 @@
 # Curriculum
 
-Ce projet est une application web Symfony permettant de présenter un parcours professionnel, des expériences, des études et un portfolio. Il s'agit d'un site CV interactif avec gestion d'administration, formulaire de contact, et affichage dynamique des expériences et projets.
+Ce projet est une application web CV réalisée en Symfony permettant de présenter mon parcours professionnel, mes expériences, mes études et mon portfolio. Il s'agit d'un site CV interactif avec gestion d'administration, formulaire de contact, et affichage dynamique des expériences et projets.
 
 ## Fonctionnalités principales
 - Présentation des expériences professionnelles (jobs)
-- Gestion des études
+- Présentation du cursus universitaire
 - Portfolio de projets
 - Interface d'administration sécurisée
 - Formulaire de contact
@@ -44,10 +44,6 @@ Ce projet est une application web Symfony permettant de présenter un parcours p
    ```
 6. **Accéder à l'application**
    - Rendez-vous sur [http://localhost:8000](http://localhost:8000)
-
-## Conseils
-- Ne jamais versionner le fichier `.env` contenant des secrets.
-- Pour la production, configurer correctement les variables d'environnement et les droits d'accès.
 
 ## Auteur
 Antoine Guillo
